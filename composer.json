@@ -1,8 +1,6 @@
 {
     "name": "qc/action-starter",
-    "scripts": {
-        "test": "phpunit tests"
-    },
+    "description": "action test",
     "require": {
         "guzzlehttp/guzzle": "^7.2",
         "mustangostang/spyc": "^0.6.3",
