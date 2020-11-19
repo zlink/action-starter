@@ -10,25 +10,25 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    
+
     strategy:
       matrix:
-        php-versions: [7.2.*, 7.3.*, 7.4.*]
+        php-versions: [5.6.*, 7.0.*, 7.1.*, 7.2.*, 7.3.*, 7.4.*]
 
     steps:
     - uses: actions/checkout@v2
 
 #     - name: Validate composer.json and composer.lock
 #       run: composer validate
-          
+
     - name: Install PHP
       uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ matrix.php-versions }}
-    
+
     - name: Check PHP Version
       run: php -v
-  
+
 #     - name: Cache Composer packages
 #       id: composer-cache
 #       uses: actions/cache@v2
