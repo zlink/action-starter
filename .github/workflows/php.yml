@@ -42,5 +42,7 @@ jobs:
       if: steps.composer-cache.outputs.cache-hit != 'true'
       run: composer update --prefer-dist --no-progress --no-plugins
 
+    - uses: php-actions/phpunit@v1
+
     - name: Run test suite
       run: composer run-script test
