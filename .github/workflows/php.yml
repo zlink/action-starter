@@ -26,15 +26,6 @@ jobs:
       with:
         php-version: ${{ matrix.php-versions }}
 
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v2
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-${{ matrix.php-versions }}
-
     - name: Install dependencies
       if: steps.composer-cache.outputs.cache-hit != 'true'
       run: composer update --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
