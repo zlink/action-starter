@@ -18,16 +18,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-#     - name: Validate composer.json and composer.lock
-#       run: composer validate
+    - name: Validate composer.json and composer.lock
+      run: composer validate
 
     - name: Install PHP
       uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ matrix.php-versions }}
-
-    - name: Check PHP Version
-      run: php -v
 
     - name: Cache Composer packages
       id: composer-cache
@@ -40,9 +37,7 @@ jobs:
 
     - name: Install dependencies
       if: steps.composer-cache.outputs.cache-hit != 'true'
-      run: composer update --prefer-dist --no-progress --no-plugins
-
-    - uses: php-actions/phpunit@v1
+      run: composer update --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
 
     - name: Run test suite
-      run: composer run-script test
+      run: vendor/bin/phpunit tests/
