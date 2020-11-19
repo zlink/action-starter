@@ -40,7 +40,7 @@ jobs:
 
     - name: Install dependencies
       if: steps.composer-cache.outputs.cache-hit != 'true'
-      run: composer update --prefer-dist --no-progress --quiet
+      run: composer update --prefer-dist --no-progress
 
     - name: Run test suite
       run: composer run-script test
